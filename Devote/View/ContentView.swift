@@ -16,12 +16,12 @@ struct ContentView: View {
     
     @State var task: String = ""
     
+    private var isButtonDisabled: Bool {
+        task.isEmpty
+    }
+    
     // FETCHING DATA
     @FetchRequest(
-        // 4 param - 1st entity (what we want to query)
-        // 2nd, sort descriptor (sets order)
-        // 3rd predicate - used to filter
-        // animation
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     // contains all items
@@ -32,6 +32,9 @@ struct ContentView: View {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
+            newItem.task = task
+            newItem.completion = false
+            newItem.id = UUID()
 
             do {
                 try viewContext.save()
@@ -46,7 +49,6 @@ struct ContentView: View {
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
-
             do {
                 try viewContext.save()
             } catch {
@@ -65,7 +67,7 @@ struct ContentView: View {
                     TextField("New Task", text: $task)
                         .padding()
                         .background(
-                            Color(uiColor: .systemGray))
+                            Color(uiColor: .systemGray6))
                         .cornerRadius(10)
 
                     Button(action: {
@@ -73,21 +75,33 @@ struct ContentView: View {
                     }, label: {
                         Spacer()
                         Text("Save")
+                        Spacer()
                     })
+                    .disabled(isButtonDisabled)
+                    .padding()
+                    .font(.headline)
+                    .foregroundStyle(Color.white)
+                    .background(Color.pink)
+                    .cornerRadius(10)
                 }
                 .padding()
                 
                 List {
-                    ForEach(items) { swag in
+                    ForEach(items) { item in
                         NavigationLink {
-                            Text("Item at \(swag.timestamp!, formatter: itemFormatter)")
+                            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                                .font(.footnote)
+                                .foregroundStyle(Color.gray)
                         } label: {
-                            Text(swag.timestamp!, formatter: itemFormatter)
+                            VStack {
+                                Text(item.task ?? "")
+                            }
                         }
                     }
                     .onDelete(perform: deleteItems)
                 }
             } //: End of VStack
+            .navigationTitle("Daily Tasks")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
