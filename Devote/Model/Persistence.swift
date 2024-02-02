@@ -13,9 +13,13 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
+        for i in 0..<5 {
+            // update sample data
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
+            newItem.task = "Sample Task no\(i)"
+            newItem.completion = false
+            newItem.id = UUID()
         }
         do {
             try viewContext.save()

@@ -14,6 +14,8 @@ struct ContentView: View {
     // think of as scratch pad to retrieve, update, and store objects
     @Environment(\.managedObjectContext) private var viewContext
     
+    @State var task: String = ""
+    
     // FETCHING DATA
     @FetchRequest(
         // 4 param - 1st entity (what we want to query)
@@ -58,16 +60,34 @@ struct ContentView: View {
     // MARK: - Body
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items) { swag in
-                    NavigationLink {
-                        Text("Item at \(swag.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(swag.timestamp!, formatter: itemFormatter)
-                    }
+            VStack {
+                VStack(spacing: 16) {
+                    TextField("New Task", text: $task)
+                        .padding()
+                        .background(
+                            Color(uiColor: .systemGray))
+                        .cornerRadius(10)
+
+                    Button(action: {
+                        addItem()
+                    }, label: {
+                        Spacer()
+                        Text("Save")
+                    })
                 }
-                .onDelete(perform: deleteItems)
-            }
+                .padding()
+                
+                List {
+                    ForEach(items) { swag in
+                        NavigationLink {
+                            Text("Item at \(swag.timestamp!, formatter: itemFormatter)")
+                        } label: {
+                            Text(swag.timestamp!, formatter: itemFormatter)
+                        }
+                    }
+                    .onDelete(perform: deleteItems)
+                }
+            } //: End of VStack
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -77,9 +97,9 @@ struct ContentView: View {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
-            }
-            Text("Select an item")
-        }
+            } //: End of Toolbar
+        Text("Select an item")
+        }//: End of Navigation
     }
 }
 
