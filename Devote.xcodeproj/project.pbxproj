@@ -17,6 +17,7 @@
 		675FF3CD2B6D6D7A00180F8C /* sound-ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 675FF3CA2B6D6D7A00180F8C /* sound-ding.mp3 */; };
 		675FF3CE2B6D6D7A00180F8C /* sound-rise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 675FF3CB2B6D6D7A00180F8C /* sound-rise.mp3 */; };
 		675FF3D72B6D74C400180F8C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675FF3D62B6D74C400180F8C /* Constant.swift */; };
+		67BBE4752B6DA1C800A2143D /* HideKeyboardExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BBE4742B6DA1C800A2143D /* HideKeyboardExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		675FF3CB2B6D6D7A00180F8C /* sound-rise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound-rise.mp3"; sourceTree = "<group>"; };
 		675FF3D52B6D6EEA00180F8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		675FF3D62B6D74C400180F8C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		67BBE4742B6DA1C800A2143D /* HideKeyboardExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		675FF3D12B6D6DCD00180F8C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				67BBE4742B6DA1C800A2143D /* HideKeyboardExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			files = (
 				6756EE1A2B6D5DC300940C8B /* Persistence.swift in Sources */,
 				6756EE132B6D5DC200940C8B /* ContentView.swift in Sources */,
+				67BBE4752B6DA1C800A2143D /* HideKeyboardExt.swift in Sources */,
 				675FF3D72B6D74C400180F8C /* Constant.swift in Sources */,
 				6756EE1D2B6D5DC300940C8B /* Devote.xcdatamodeld in Sources */,
 				6756EE112B6D5DC200940C8B /* DevoteApp.swift in Sources */,
