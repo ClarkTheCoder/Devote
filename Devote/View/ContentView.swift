@@ -65,53 +65,66 @@ struct ContentView: View {
     // MARK: - Body
     var body: some View {
         NavigationView {
-            VStack {
-                VStack(spacing: 16) {
-                    TextField("New Task", text: $task)
+            ZStack {
+                VStack {
+                    VStack(spacing: 16) {
+                        TextField("New Task", text: $task)
+                            .padding()
+                            .background(
+                                Color(uiColor: .systemGray6))
+                            .cornerRadius(10)
+                        
+                        Button(action: {
+                            addItem()
+                        }, label: {
+                            Spacer()
+                            Text("Save")
+                            Spacer()
+                        })
+                        .disabled(isButtonDisabled)
                         .padding()
-                        .background(
-                            Color(uiColor: .systemGray6))
+                        .font(.headline)
+                        .foregroundStyle(Color.white)
+                        .background(isButtonDisabled ? Color.gray : Color.pink)
                         .cornerRadius(10)
-
-                    Button(action: {
-                        addItem()
-                    }, label: {
-                        Spacer()
-                        Text("Save")
-                        Spacer()
-                    })
-                    .disabled(isButtonDisabled)
+                    }
                     .padding()
-                    .font(.headline)
-                    .foregroundStyle(Color.white)
-                    .background(isButtonDisabled ? Color.gray : Color.pink)
-                    .cornerRadius(10)
-                }
-                .padding()
-                
-                List {
-                    ForEach(items) { item in
-                        NavigationLink {
-                            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                                .font(.footnote)
-                                .foregroundStyle(Color.gray)
-                        } label: {
-                            VStack {
-                                Text(item.task ?? "")
+                    
+                    List {
+                        ForEach(items) { item in
+                            NavigationLink {
+                                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                                    .font(.footnote)
+                                    .foregroundStyle(Color.gray)
+                            } label: {
+                                VStack {
+                                    Text(item.task ?? "")
+                                }
                             }
                         }
-                    }
-                    .onDelete(perform: deleteItems)
-                }
-            } //: End of VStack
+                        .onDelete(perform: deleteItems)
+                    }//: List
+                    .shadow(color: Color(red:0, green:0, blue:0, opacity:0.3), radius: 12)
+                    .listStyle(InsetGroupedListStyle())
+                    .scrollContentBackground(.hidden)
+                    .padding(.vertical, 0)
+                    // Remove default vertical padding & maximize list on iPad devices
+                    .frame(maxWidth: 640)
+                    
+                } //: VStack
+                .background(
+                    BackgroundImageView()
+                )
+            } // ZStack
             .navigationTitle("Daily Tasks")
+            .background(backgroundGradient)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
-            } //: End of Toolbar
-        Text("Select an item")
-        }//: End of Navigation
+            }//: Toolbar
+        }//: Navigation
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

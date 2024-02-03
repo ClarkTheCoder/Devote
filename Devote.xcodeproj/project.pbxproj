@@ -17,6 +17,7 @@
 		675FF3CD2B6D6D7A00180F8C /* sound-ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 675FF3CA2B6D6D7A00180F8C /* sound-ding.mp3 */; };
 		675FF3CE2B6D6D7A00180F8C /* sound-rise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 675FF3CB2B6D6D7A00180F8C /* sound-rise.mp3 */; };
 		675FF3D72B6D74C400180F8C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675FF3D62B6D74C400180F8C /* Constant.swift */; };
+		676412202B6DF44D00670CC2 /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6764121F2B6DF44D00670CC2 /* BackgroundImageView.swift */; };
 		67BBE4752B6DA1C800A2143D /* HideKeyboardExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BBE4742B6DA1C800A2143D /* HideKeyboardExt.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		675FF3CB2B6D6D7A00180F8C /* sound-rise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound-rise.mp3"; sourceTree = "<group>"; };
 		675FF3D52B6D6EEA00180F8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		675FF3D62B6D74C400180F8C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		6764121F2B6DF44D00670CC2 /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
 		67BBE4742B6DA1C800A2143D /* HideKeyboardExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				6756EE122B6D5DC200940C8B /* ContentView.swift */,
+				6764121F2B6DF44D00670CC2 /* BackgroundImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6756EE1A2B6D5DC300940C8B /* Persistence.swift in Sources */,
+				676412202B6DF44D00670CC2 /* BackgroundImageView.swift in Sources */,
 				6756EE132B6D5DC200940C8B /* ContentView.swift in Sources */,
 				67BBE4752B6DA1C800A2143D /* HideKeyboardExt.swift in Sources */,
 				675FF3D72B6D74C400180F8C /* Constant.swift in Sources */,
