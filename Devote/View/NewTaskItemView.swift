@@ -9,17 +9,18 @@ import SwiftUI
 
 struct NewTaskItemView: View {
     
+    // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext
-    
     @State var task: String = ""
-    
     private var isButtonDisabled: Bool {
         task.isEmpty
     }
     
+    //MARK: - Body
     var body: some View {
         VStack {
             Spacer()
+            
             VStack(spacing: 16) {
                 TextField("New Task", text: $task)
                     .padding()
@@ -40,16 +41,17 @@ struct NewTaskItemView: View {
                 .background(isButtonDisabled ? Color.gray : Color.pink)
                 .cornerRadius(10)
             }
-            .padding()
-            .shadow(color: Color(red:0, green:0, blue:0, opacity:0.3), radius: 12)
-            .listStyle(InsetGroupedListStyle())
-            .scrollContentBackground(.hidden)
-            .padding(.vertical, 0)
-            // Remove default vertical padding & maximize list on iPad devices
+            .padding(.horizontal)
+            .padding(.vertical, 20)
+            .background(Color.white)
+            .cornerRadius(12)
+            .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.65), radius: 24)
             .frame(maxWidth: 640)
-            
         }
-        }
+        .padding()
+    }
+    
+    //MARK: - Function
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
