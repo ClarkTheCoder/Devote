@@ -23,6 +23,8 @@ struct NewTaskItemView: View {
             
             VStack(spacing: 16) {
                 TextField("New Task", text: $task)
+                    .foregroundStyle(Color.pink)
+                    .font(.system(size: 24, weight: .bold, design: .rounded))
                     .padding()
                     .background(
                         Color(uiColor: .systemGray6))
@@ -32,13 +34,14 @@ struct NewTaskItemView: View {
                 }, label: {
                     Spacer()
                     Text("Save")
+                        .font(.system(size: 24, weight: .bold, design: .rounded))
                     Spacer()
                 })
                 .disabled(isButtonDisabled)
                 .padding()
                 .font(.headline)
                 .foregroundStyle(Color.white)
-                .background(isButtonDisabled ? Color.gray : Color.pink)
+                .background(isButtonDisabled ? Color.blue : Color.pink)
                 .cornerRadius(10)
             }
             .padding(.horizontal)
