@@ -45,7 +45,6 @@ struct ContentView: View {
             }
             task = ""
             hideKeyboard()
-        
         }
     }
 
@@ -73,7 +72,6 @@ struct ContentView: View {
                             .background(
                                 Color(uiColor: .systemGray6))
                             .cornerRadius(10)
-                        
                         Button(action: {
                             addItem()
                         }, label: {
@@ -111,11 +109,11 @@ struct ContentView: View {
                     // Remove default vertical padding & maximize list on iPad devices
                     .frame(maxWidth: 640)
                     
-                } //: VStack
+                }//: VStack
                 .background(
                     BackgroundImageView()
                 )
-            } // ZStack
+            }//: ZStack
             .navigationTitle("Daily Tasks")
             .background(backgroundGradient)
             .toolbar {
